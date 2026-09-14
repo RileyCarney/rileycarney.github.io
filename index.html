@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Primary Meta -->
+  <title>Riley Carney — AI &amp; IT Professional | Seattle, WA</title>
+  <meta name="description" content="Riley Carney — Mathematician, AI &amp; IT professional based in Seattle, WA. PowerShell automation, Power Automate, Generative AI strategy, CSPO certified. Currently at Zoetis." />
+  <meta name="author" content="Riley Carney" />
+  <meta name="keywords" content="Riley Carney, IT professional, PowerShell, Power Automate, AI, Zoetis, Seattle, mathematician, CSPO, automation" />
+  <link rel="canonical" href="https://rileycarney.github.io" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Riley Carney — AI &amp; IT Professional" />
+  <meta property="og:description" content="Mathematician | AI &amp; IT · Seattle, WA · PowerShell automation, Generative AI strategy, IT Infrastructure" />
+  <meta property="og:image" content="https://rileycarney.github.io/assets/profile.jpg" />
+  <meta property="og:url" content="https://rileycarney.github.io" />
+  <meta property="og:type" content="profile" />
+  <meta property="profile:first_name" content="Riley" />
+  <meta property="profile:last_name" content="Carney" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Riley Carney — AI &amp; IT Professional" />
+  <meta name="twitter:description" content="Mathematician | AI &amp; IT · Seattle, WA" />
+  <meta name="twitter:image" content="https://rileycarney.github.io/assets/profile.jpg" />
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Riley Carney",
+    "url": "https://rileycarney.github.io",
+    "sameAs": [
+      "https://www.linkedin.com/in/riley-carney",
+      "https://github.com/RileyCarney"
+    ],
+    "jobTitle": "AI &amp; IT Professional",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Zoetis"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Seattle",
+      "addressRegion": "WA",
+      "addressCountry": "US"
+    },
+    "alumniOf": {
+      "@type": "EducationalOrganization",
+      "name": "University of Washington Bothell"
+    },
+    "description": "Mathematician and AI &amp; IT professional passionate about exploring why systems work the way they do and how to make them better.",
+    "image": "https://rileycarney.github.io/assets/profile.jpg"
+  }
+  </script>
+
+  <!-- Google Fonts Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+  <!-- ====================================================
+       NAVIGATION
+       ==================================================== -->
+  <header id="site-nav" role="banner">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo" aria-label="Riley Carney — Home">
+        riley<span>.</span>carney
+      </a>
+
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#certifications">Certs</a>
+        <a href="#projects">Projects</a>
+        <a href="#writing">Writing</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <button
+        id="nav-hamburger"
+        class="nav-hamburger"
+        aria-label="Toggle mobile menu"
+        aria-expanded="false"
+        aria-controls="nav-mobile"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+    <!-- Mobile drawer -->
+    <nav id="nav-mobile" class="nav-mobile" aria-label="Mobile navigation">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#certifications">Certs</a>
+      <a href="#projects">Projects</a>
+      <a href="#writing">Writing</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ====================================================
+         HERO
+         ==================================================== -->
+    <section id="hero" aria-label="Introduction">
+      <div class="container">
+        <div class="hero-inner">
+
+          <!-- Photo -->
+          <div class="hero-photo-wrap" aria-hidden="true">
+            <img
+              src="assets/profile.jpg"
+              alt="Riley Carney"
+              class="hero-photo"
+              width="180"
+              height="180"
+              loading="eager"
+            />
+          </div>
+
+          <!-- Content -->
+          <div class="hero-content">
+            <p class="hero-eyebrow">Seattle, Washington, USA</p>
+
+            <h1 class="hero-name">Riley Carney</h1>
+
+            <p class="hero-title">
+              Mathematician&nbsp;|&nbsp;<span class="accent">AI &amp; IT Professional</span>
+            </p>
+
+            <p class="hero-tagline">
+              Passionate about exploring why systems work the way they do — and how to make them
+              better. Bridging mathematics, automation, and generative AI to solve real operational challenges.
+            </p>
+
+            <div class="hero-ctas">
+              <a href="#projects" class="btn btn-primary">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                  <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+                </svg>
+                View My Work
+              </a>
+              <a href="https://www.linkedin.com/in/riley-carney" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+                Connect on LinkedIn
+              </a>
+              <a href="https://github.com/RileyCarney" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                  <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+                </svg>
+                GitHub Profile
+              </a>
+            </div>
+
+            <!-- Stats bar -->
+            <div class="hero-stats" aria-label="Profile statistics">
+              <div class="hero-stat-item">
+                <span class="hero-stat-number" id="gh-repos">1</span>
+                <span class="hero-stat-label">Public Repos</span>
+              </div>
+              <div class="hero-stat-item">
+                <span class="hero-stat-number">4+</span>
+                <span class="hero-stat-label">Certifications</span>
+              </div>
+              <div class="hero-stat-item">
+                <span class="hero-stat-number" id="gh-member">2013</span>
+                <span class="hero-stat-label">On GitHub Since</span>
+              </div>
+              <div class="hero-stat-item">
+                <span class="hero-stat-number">711</span>
+                <span class="hero-stat-label">LinkedIn Followers</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================
+         ABOUT
+         ==================================================== -->
+    <section id="about" class="section" aria-label="About Riley Carney">
+      <div class="container">
+        <div class="section-header fade-up">
+          <h2>About</h2>
+          <div class="section-header-line" aria-hidden="true"></div>
+        </div>
+
+        <div class="about-grid">
+
+          <!-- Photo column -->
+          <div class="about-photo-wrap fade-up">
+            <img
+              src="assets/profile.jpg"
+              alt="Riley Carney"
+              class="about-photo"
+              width="300"
+              loading="lazy"
+            />
+            <div class="about-photo-meta">
+              <div class="about-meta-item">
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                  <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+                </svg>
+                <a href="https://github.com/RileyCarney" target="_blank" rel="noopener noreferrer">@RileyCarney</a>
+              </div>
+              <div class="about-meta-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+                <a href="https://www.linkedin.com/in/riley-carney" target="_blank" rel="noopener noreferrer">riley-carney</a>
+              </div>
+              <div class="about-meta-item">
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                  <path d="M8 0a6 6 0 100 12A6 6 0 008 0zm3.646 9.354a.5.5 0 01-.708 0L7.5 5.915V3.5a.5.5 0 011 0v2.085l3.354 3.354a.5.5 0 010 .707v-.292z"/>
+                  <path fill-rule="evenodd" d="M8 1a7 7 0 100 14A7 7 0 008 1zM0 8a8 8 0 1116 0A8 8 0 010 8z" clip-rule="evenodd"/>
+                </svg>
+                Zoetis · Remote
+              </div>
+              <div class="about-meta-item">
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M11.536 3.464a5 5 0 010 7.072L8 14.07l-3.536-3.534a5 5 0 117.072-7.072v.001zm1.06 8.132a6.5 6.5 0 10-9.192 0L8 16.586l4.596-4.99zM8 9a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+                </svg>
+                Seattle, Washington, USA
+              </div>
+            </div>
+          </div>
+
+          <!-- Text column -->
+          <div class="about-content fade-up">
+            <h2>Hey, I'm Riley</h2>
+            <p class="lead">Mathematician | AI &amp; IT</p>
+
+            <p>
+              I'm based in Seattle, WA, currently working remotely at <strong>Zoetis</strong> — a global animal health company where I apply systems thinking, data analysis, and IT automation to make complex workflows simpler and more reliable.
+            </p>
+
+            <div class="about-highlight">
+              "I'm passionate about exploring why systems work the way they do and how to make them better."
+            </div>
+
+            <p>
+              With a background in <strong>Mathematics from the University of Washington Bothell</strong> and over a decade of hands-on scripting experience — PowerShell, Power Automate, AWS provisioning — I've found my niche at the intersection of <strong>AI strategy and operational IT</strong>.
+            </p>
+
+            <p>
+              Whether it's automating a reporting pipeline, designing better IT service processes, or applying generative AI concepts to real business challenges, I bring a methodical, first-principles mindset to every problem. I'm a <strong>Certified Scrum Product Owner (CSPO)</strong> and a continuous learner — always exploring the next frontier in AI, automation, and systems design.
+            </p>
+
+            <p>
+              When I'm not engineering workflows or writing about tech, I'm probably digging into what makes complex systems tick — and figuring out how to make them work better.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================
+         SKILLS
+         ==================================================== -->
+    <section id="skills" class="section" aria-label="Skills and Technologies">
+      <div class="container">
+        <div class="section-header fade-up">
+          <h2>Skills &amp; Technologies</h2>
+          <div class="section-header-line" aria-hidden="true"></div>
+        </div>
+
+        <div class="skills-grid stagger">
+
+          <div class="skill-category">
+            <div class="skill-category-header">
+              <div class="skill-icon skill-icon-blue" aria-hidden="true">⚡</div>
+              <h3>Automation &amp; Scripting</h3>
+            </div>
+            <div class="skill-tags">
+              <span class="tag">PowerShell</span>
+              <span class="tag">Power Automate</span>
+              <span class="tag">AWS EC2</span>
+              <span class="tag">User Data Scripts</span>
+              <span class="tag">Config Management</span>
+              <span class="tag">SharePoint</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <div class="skill-category-header">
+              <div class="skill-icon skill-icon-green" aria-hidden="true">🤖</div>
+              <h3>AI &amp; Data</h3>
+            </div>
+            <div class="skill-tags">
+              <span class="tag">Generative AI Strategy</span>
+              <span class="tag">AI Case Analysis</span>
+              <span class="tag">IT Service Management</span>
+              <span class="tag">Business Intelligence</span>
+              <span class="tag">Excel / Data Analysis</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <div class="skill-category-header">
+              <div class="skill-icon skill-icon-gold" aria-hidden="true">📐</div>
+              <h3>Methodologies</h3>
+            </div>
+            <div class="skill-tags">
+              <span class="tag">Scrum / Agile (CSPO)</span>
+              <span class="tag">Root Cause Analysis</span>
+              <span class="tag">IT Service Desk</span>
+              <span class="tag">Systems Thinking</span>
+              <span class="tag">Process Improvement</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <div class="skill-category-header">
+              <div class="skill-icon skill-icon-purple" aria-hidden="true">🛠️</div>
+              <h3>Tools &amp; Platforms</h3>
+            </div>
+            <div class="skill-tags">
+              <span class="tag">GitHub</span>
+              <span class="tag">Microsoft 365</span>
+              <span class="tag">Zoom</span>
+              <span class="tag">AWS</span>
+              <span class="tag">Excel / Power Query</span>
+              <span class="tag">SharePoint</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <div class="skill-category-header">
+              <div class="skill-icon skill-icon-red" aria-hidden="true">📊</div>
+              <h3>Domain Knowledge</h3>
+            </div>
+            <div class="skill-tags">
+              <span class="tag">Mathematics</span>
+              <span class="tag">Animal Health / Pharma</span>
+              <span class="tag">IT Operations</span>
+              <span class="tag">Quality Service</span>
+              <span class="tag">Workflow Design</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================
+         CERTIFICATIONS
+         ==================================================== -->
+    <section id="certifications" class="section" aria-label="Licenses and Certifications">
+      <div class="container">
+        <div class="section-header fade-up">
+          <h2>Licenses &amp; Certifications</h2>
+          <div class="section-header-line" aria-hidden="true"></div>
+        </div>
+
+        <div class="certs-grid stagger">
+
+          <!-- Cert 1 -->
+          <article class="cert-card">
+            <div class="cert-header">
+              <div class="cert-badge" aria-hidden="true" style="background:rgba(88,166,255,0.08);">🔍</div>
+              <div class="cert-info">
+                <h3>Root Cause Analysis: Systemic Problem Prevention</h3>
+                <p class="cert-issuer">LinkedIn Learning</p>
+              </div>
+            </div>
+            <div class="cert-meta">
+              <span class="cert-dates">Issued Feb 2026</span>
+              <a href="https://www.linkedin.com/learning/certificates/9d160deeb0c3425da0ebaaf4dfc21f2d0b59338a7f0433fb9be68705bb1ede35" target="_blank" rel="noopener noreferrer" class="tag tag-green">See Credential ↗</a>
+            </div>
+          </article>
+
+          <!-- Cert 2 -->
+          <article class="cert-card">
+            <div class="cert-header">
+              <div class="cert-badge" aria-hidden="true" style="background:rgba(63,185,80,0.08);">🖥️</div>
+              <div class="cert-info">
+                <h3>IT Service Desk: Service Management</h3>
+                <p class="cert-issuer">LinkedIn Learning</p>
+              </div>
+            </div>
+            <div class="cert-meta">
+              <span class="cert-dates">Issued Jul 2025</span>
+            </div>
+          </article>
+
+          <!-- Cert 3 -->
+          <article class="cert-card">
+            <div class="cert-header">
+              <div class="cert-badge" aria-hidden="true" style="background:rgba(63,185,80,0.08);">🤖</div>
+              <div class="cert-info">
+                <h3>Integrating Generative AI into Business Strategy</h3>
+                <p class="cert-issuer">LinkedIn Learning</p>
+              </div>
+            </div>
+            <div class="cert-meta">
+              <span class="cert-dates">Issued Jun 2025</span>
+            </div>
+          </article>
+
+          <!-- Cert 4 -->
+          <article class="cert-card">
+            <div class="cert-header">
+              <div class="cert-badge" aria-hidden="true" style="background:rgba(88,166,255,0.08);">📊</div>
+              <div class="cert-info">
+                <h3>Artificial Intelligence Case Studies in Different Business Industries</h3>
+                <p class="cert-issuer">LinkedIn Learning</p>
+              </div>
+            </div>
+            <div class="cert-meta">
+              <span class="cert-dates">Issued Jun 2025</span>
+              <a href="https://www.linkedin.com/learning/certificates/1b6a7fd7bff0bfd622b3cf4d48d7f429e18ca2fd89274e003d14cc173839c8fd" target="_blank" rel="noopener noreferrer" class="tag tag-green">See Credential ↗</a>
+            </div>
+          </article>
+
+          <!-- Cert 5 — CSPO (featured) -->
+          <article class="cert-card" style="border-color: rgba(227,179,65,0.4);">
+            <div class="cert-header">
+              <div class="cert-badge" aria-hidden="true" style="background:rgba(227,179,65,0.1);">🏅</div>
+              <div class="cert-info">
+                <h3>Certified Scrum Product Owner (CSPO)</h3>
+                <p class="cert-issuer">Scrum Alliance</p>
+              </div>
+            </div>
+            <div class="cert-meta">
+              <span class="cert-dates">
+                Issued Jul 2024 &nbsp;·&nbsp;
+                <span class="expires">Expires Jul 2026</span>
+              </span>
+            </div>
+            <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:0.5rem;">
+              <span class="cert-cred-id">ID: 001669366</span>
+              <a href="https://www.scrumalliance.org/get-certified/product-owner-track/certified-scrum-product-owner" target="_blank" rel="noopener noreferrer" class="tag tag-orange">See Credential ↗</a>
+            </div>
+          </article>
+
+          <!-- Cert 6 -->
+          <article class="cert-card">
+            <div class="cert-header">
+              <div class="cert-badge" aria-hidden="true" style="background:rgba(247,129,102,0.08);">✨</div>
+              <div class="cert-info">
+                <h3>Disney's Approach to Quality Service</h3>
+                <p class="cert-issuer">The Walt Disney Company</p>
+              </div>
+            </div>
+            <div class="cert-meta">
+              <span class="cert-dates">Leadership &amp; Service Excellence</span>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================
+         PROJECTS
+         ==================================================== -->
+    <section id="projects" class="section" aria-label="Featured Projects">
+      <div class="container">
+        <div class="section-header fade-up">
+          <h2>Projects</h2>
+          <div class="section-header-line" aria-hidden="true"></div>
+        </div>
+
+        <div class="projects-list stagger">
+
+          <!-- Project 1: Repo -->
+          <article class="project-card">
+            <div>
+              <div class="project-top">
+                <span class="project-icon" aria-hidden="true">📦</span>
+                <a
+                  href="https://github.com/RileyCarney/Infinite-Announcements-Config-Generator"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="project-name"
+                >
+                  Infinite-Announcements-Config-Generator
+                </a>
+                <span class="project-type">Repository</span>
+              </div>
+              <p class="project-desc">
+                A PowerShell-based tool that generates configuration files for an announcements automation system. Designed to simplify bulk configuration management and reduce manual setup overhead for IT administrators. Licensed under AGPL-3.0.
+              </p>
+              <div class="project-tags">
+                <span class="tag">PowerShell</span>
+                <span class="tag">Automation</span>
+                <span class="tag">Config Management</span>
+                <span class="tag-green tag">AGPL-3.0</span>
+              </div>
+              <div style="margin-top:0.75rem;">
+                <span class="project-lang">
+                  <span class="lang-dot lang-dot-ps" aria-hidden="true"></span>
+                  PowerShell
+                </span>
+              </div>
+            </div>
+            <div>
+              <a
+                href="https://github.com/RileyCarney/Infinite-Announcements-Config-Generator"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="project-link"
+                aria-label="View Infinite Announcements Config Generator on GitHub"
+              >
+                View on GitHub ↗
+              </a>
+            </div>
+          </article>
+
+          <!-- Project 2: Gist -->
+          <article class="project-card">
+            <div>
+              <div class="project-top">
+                <span class="project-icon" aria-hidden="true">☁️</span>
+                <a
+                  href="https://gist.github.com/RileyCarney/cc6979deeb0937d31067ea4a726c52cb"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="project-name"
+                >
+                  AWS EC2 User Data Bootstrap Script
+                </a>
+                <span class="project-type">Gist</span>
+              </div>
+              <p class="project-desc">
+                A PowerShell user data script for AWS EC2 instance provisioning. Automates environment bootstrap tasks at first launch — system configuration, software installation, and environment setup — enabling repeatable, hands-free instance initialization.
+              </p>
+              <div class="project-tags">
+                <span class="tag">PowerShell</span>
+                <span class="tag">AWS</span>
+                <span class="tag">Cloud Automation</span>
+                <span class="tag">EC2</span>
+                <span class="tag">DevOps</span>
+              </div>
+              <div style="margin-top:0.75rem;">
+                <span class="project-lang">
+                  <span class="lang-dot lang-dot-ps" aria-hidden="true"></span>
+                  PowerShell
+                </span>
+              </div>
+            </div>
+            <div>
+              <a
+                href="https://gist.github.com/RileyCarney/cc6979deeb0937d31067ea4a726c52cb"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="project-link"
+                aria-label="View AWS EC2 User Data Bootstrap Script on GitHub Gist"
+              >
+                View Gist ↗
+              </a>
+            </div>
+          </article>
+
+          <!-- Project 3: Gist -->
+          <article class="project-card">
+            <div>
+              <div class="project-top">
+                <span class="project-icon" aria-hidden="true">📋</span>
+                <a
+                  href="https://gist.github.com/RileyCarney/2fa1eb7c2e26ddbde053f8e75ed14fda"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="project-name"
+                >
+                  PowerShell Demos Collection
+                </a>
+                <span class="project-type">Gist</span>
+              </div>
+              <p class="project-desc">
+                A curated collection of PowerShell demonstration scripts covering common automation patterns, scripting techniques, and IT admin workflows. A reference toolkit for rapid development and learning.
+              </p>
+              <div class="project-tags">
+                <span class="tag">PowerShell</span>
+                <span class="tag">Demos</span>
+                <span class="tag">IT Automation</span>
+                <span class="tag">Reference</span>
+              </div>
+              <div style="margin-top:0.75rem;">
+                <span class="project-lang">
+                  <span class="lang-dot lang-dot-ps" aria-hidden="true"></span>
+                  PowerShell · 9.2KB
+                </span>
+              </div>
+            </div>
+            <div>
+              <a
+                href="https://gist.github.com/RileyCarney/2fa1eb7c2e26ddbde053f8e75ed14fda"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="project-link"
+                aria-label="View PowerShell Demos Collection on GitHub Gist"
+              >
+                View Gist ↗
+              </a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================
+         WRITING
+         ==================================================== -->
+    <section id="writing" class="section" aria-label="Published Articles">
+      <div class="container">
+        <div class="section-header fade-up">
+          <h2>Writing</h2>
+          <div class="section-header-line" aria-hidden="true"></div>
+        </div>
+
+        <div class="writing-list stagger">
+
+          <!-- Article 1 -->
+          <article class="article-card">
+            <div class="article-icon" aria-hidden="true">⚙️</div>
+            <div class="article-content">
+              <div class="article-meta">
+                <span class="article-date">December 2024</span>
+                <span class="article-platform">LinkedIn Pulse</span>
+              </div>
+              <a
+                href="https://www.linkedin.com/pulse/add-zoom-recordings-excel-spreadsheet-power-automate-riley-carney-soywc"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="article-title"
+              >
+                Add Zoom Recordings into an Excel Spreadsheet with Power Automate
+              </a>
+              <p class="article-summary">
+                A practical guide to automating the integration of Zoom cloud recording metadata into Excel using Microsoft Power Automate — eliminating manual data entry and keeping your records always up to date.
+              </p>
+            </div>
+            <div class="article-arrow" aria-hidden="true">↗</div>
+          </article>
+
+          <!-- Article 2 -->
+          <article class="article-card">
+            <div class="article-icon" aria-hidden="true">💻</div>
+            <div class="article-content">
+              <div class="article-meta">
+                <span class="article-date">April 2019</span>
+                <span class="article-platform">LinkedIn Pulse</span>
+              </div>
+              <a
+                href="https://www.linkedin.com/pulse/powershell-one-time-pop-up-get-credential-riley-carney"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="article-title"
+              >
+                [PowerShell] One Time Pop-Up for Get-Credential
+              </a>
+              <p class="article-summary">
+                A deep dive into building a secure, one-time credential prompt in PowerShell — ensuring credentials are requested from users exactly once per session, improving both security posture and user experience.
+              </p>
+            </div>
+            <div class="article-arrow" aria-hidden="true">↗</div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================
+         EXPERIENCE
+         ==================================================== -->
+    <section id="experience" class="section" aria-label="Work Experience and Education">
+      <div class="container">
+        <div class="section-header fade-up">
+          <h2>Experience &amp; Education</h2>
+          <div class="section-header-line" aria-hidden="true"></div>
+        </div>
+
+        <div class="timeline fade-up">
+
+          <!-- Current — Zoetis -->
+          <div class="timeline-item">
+            <div class="timeline-dot current" aria-hidden="true"></div>
+            <div class="timeline-card">
+              <div class="timeline-header">
+                <span class="timeline-org">Zoetis</span>
+                <span class="timeline-period">Current</span>
+              </div>
+              <p class="timeline-role">IT Professional (Remote)</p>
+              <p class="timeline-location">
+                <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M11.536 3.464a5 5 0 010 7.072L8 14.07l-3.536-3.534a5 5 0 117.072-7.072v.001zm1.06 8.132a6.5 6.5 0 10-9.192 0L8 16.586l4.596-4.99zM8 9a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+                </svg>
+                Remote
+              </p>
+            </div>
+          </div>
+
+          <!-- Prior roles — redacted by LinkedIn -->
+          <div class="timeline-item">
+            <div class="timeline-dot" aria-hidden="true"></div>
+            <div class="timeline-card">
+              <div class="timeline-header">
+                <span class="timeline-org">Previous Roles</span>
+                <span class="timeline-period">2013 – Present</span>
+              </div>
+              <p class="timeline-role">Multiple IT &amp; Technical Positions</p>
+              <p class="timeline-location">
+                <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M11.536 3.464a5 5 0 010 7.072L8 14.07l-3.536-3.534a5 5 0 117.072-7.072v.001zm1.06 8.132a6.5 6.5 0 10-9.192 0L8 16.586l4.596-4.99zM8 9a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+                </svg>
+                Bellevue, Renton, Federal Way, Bothell — Greater Seattle Area, WA
+              </p>
+            </div>
+          </div>
+
+          <!-- UW Bothell -->
+          <div class="timeline-item">
+            <div class="timeline-dot" aria-hidden="true"></div>
+            <div class="timeline-card">
+              <div class="timeline-header">
+                <span class="timeline-org">University of Washington Bothell</span>
+                <span class="timeline-period">2016 – 2018</span>
+              </div>
+              <p class="timeline-role">Mathematics</p>
+              <p class="timeline-location">
+                <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M11.536 3.464a5 5 0 010 7.072L8 14.07l-3.536-3.534a5 5 0 117.072-7.072v.001zm1.06 8.132a6.5 6.5 0 10-9.192 0L8 16.586l4.596-4.99zM8 9a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+                </svg>
+                Bothell, WA
+              </p>
+            </div>
+          </div>
+
+          <!-- Prior Education -->
+          <div class="timeline-item">
+            <div class="timeline-dot" aria-hidden="true"></div>
+            <div class="timeline-card">
+              <div class="timeline-header">
+                <span class="timeline-org">Prior Education</span>
+                <span class="timeline-period">2008 – 2015</span>
+              </div>
+              <p class="timeline-role">Secondary &amp; Post-Secondary Studies</p>
+              <p class="timeline-location">
+                <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M11.536 3.464a5 5 0 010 7.072L8 14.07l-3.536-3.534a5 5 0 117.072-7.072v.001zm1.06 8.132a6.5 6.5 0 10-9.192 0L8 16.586l4.596-4.99zM8 9a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+                </svg>
+                Washington, USA
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- LinkedIn CTA -->
+        <div class="timeline-cta fade-up">
+          <p>Full experience history and endorsements available on LinkedIn.</p>
+          <a
+            href="https://www.linkedin.com/in/riley-carney"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-secondary"
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+            View Full Profile on LinkedIn
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ====================================================
+         CONTACT
+         ==================================================== -->
+    <section id="contact" class="section" aria-label="Contact and Connect">
+      <div class="container">
+        <div class="contact-inner">
+          <h2 class="fade-up">Let's <span>Connect</span></h2>
+          <p class="lead fade-up">
+            I'm always open to interesting conversations about AI, automation, systems design, or anything in between. Find me on LinkedIn or explore my code on GitHub.
+          </p>
+          <div class="contact-links fade-up">
+            <a
+              href="https://www.linkedin.com/in/riley-carney"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-primary"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+              </svg>
+              Connect on LinkedIn
+            </a>
+            <a
+              href="https://github.com/RileyCarney"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-secondary"
+            >
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+              </svg>
+              View GitHub Profile
+            </a>
+          </div>
+          <p class="contact-location fade-up">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M11.536 3.464a5 5 0 010 7.072L8 14.07l-3.536-3.534a5 5 0 117.072-7.072v.001zm1.06 8.132a6.5 6.5 0 10-9.192 0L8 16.586l4.596-4.99zM8 9a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+            </svg>
+            Seattle, Washington, USA
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ====================================================
+       FOOTER
+       ==================================================== -->
+  <footer id="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-inner">
+        <p class="footer-copy">
+          &copy; <span id="footer-year">2026</span>
+          <a href="https://github.com/RileyCarney" target="_blank" rel="noopener noreferrer">Riley Carney</a>
+          &nbsp;·&nbsp; Built with HTML, CSS &amp; ❤️
+          &nbsp;·&nbsp; Hosted on
+          <a href="https://pages.github.com" target="_blank" rel="noopener noreferrer">GitHub Pages</a>
+        </p>
+        <div class="footer-links">
+          <a href="https://www.linkedin.com/in/riley-carney" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile">LinkedIn</a>
+          <a href="https://github.com/RileyCarney" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">GitHub</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll to top -->
+  <button id="scroll-top" aria-label="Scroll to top">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+      <path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 01.708 0l6 6a.5.5 0 01-.708.708L8 5.707l-5.646 5.647a.5.5 0 01-.708-.708l6-6z" clip-rule="evenodd"/>
+    </svg>
+  </button>
+
+  <!-- Scripts -->
+  <script src="js/main.js" defer></script>
+
+</body>
+</html>
