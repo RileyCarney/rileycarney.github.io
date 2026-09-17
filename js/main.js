@@ -1,186 +1,214 @@
 /* ============================================================
-   RILEY CARNEY — GitHub Pages Personal Site
-   main.js — Navigation, Scroll Animations, IntersectionObserver
+   RILEY CARNEY — Official Portfolio & Engineering Resume
+   main.js — Clean Executive Utilities
+   Theme Management, Navigation, Clipboard & Print Controls
    ============================================================ */
 
 (function () {
   'use strict';
 
-  /* ----------------------------------------------------------------
-     1. NAVIGATION — sticky scroll shadow + active section highlight
-     ---------------------------------------------------------------- */
-  const nav = document.getElementById('site-nav');
-  const navLinks = document.querySelectorAll('.nav-links a, .nav-mobile a');
-  const sections = document.querySelectorAll('section[id]');
-  const hamburger = document.getElementById('nav-hamburger');
-  const mobileNav = document.getElementById('nav-mobile');
+  /* ------------------------------------------------------------
+     1. THEME CONTROLLER (LIGHT / DARK)
+     ------------------------------------------------------------ */
+  const THEME_STORAGE_KEY = 'rileycarney_theme_preference';
+  const htmlElement = document.documentElement;
+  const themeToggleBtn = document.getElementById('theme-toggle');
 
-  // Sticky nav shadow on scroll
-  function onScroll() {
-    if (window.scrollY > 10) {
-      nav.classList.add('scrolled');
-    } else {
-      nav.classList.remove('scrolled');
+  function getPreferredTheme() {
+    const stored = localStorage.getItem(THEME_STORAGE_KEY);
+    if (stored === 'dark' || stored === 'light') {
+      return stored;
     }
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
 
-    // Scroll-to-top button visibility
-    const scrollTop = document.getElementById('scroll-top');
-    if (scrollTop) {
-      if (window.scrollY > 400) {
-        scrollTop.classList.add('visible');
-      } else {
-        scrollTop.classList.remove('visible');
+  function applyTheme(theme) {
+    htmlElement.setAttribute('data-theme', theme);
+    if (themeToggleBtn) {
+      const isDark = theme === 'dark';
+      themeToggleBtn.setAttribute(
+        'aria-label',
+        isDark ? 'Switch to light color theme' : 'Switch to dark color theme'
+      );
+      themeToggleBtn.setAttribute(
+        'title',
+        isDark ? 'Switch to light color theme' : 'Switch to dark color theme'
+      );
+    }
+  }
+
+  // Initialize theme immediately
+  const initialTheme = getPreferredTheme();
+  applyTheme(initialTheme);
+
+  if (themeToggleBtn) {
+    themeToggleBtn.addEventListener('click', () => {
+      const current = htmlElement.getAttribute('data-theme') || 'light';
+      const nextTheme = current === 'dark' ? 'light' : 'dark';
+      applyTheme(nextTheme);
+      try {
+        localStorage.setItem(THEME_STORAGE_KEY, nextTheme);
+      } catch (err) {
+        // Handle private browsing or localStorage disabled
       }
-    }
-  }
-
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll(); // run once on load
-
-  // Active nav link — IntersectionObserver on sections
-  const sectionObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const id = entry.target.getAttribute('id');
-          navLinks.forEach((link) => {
-            link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
-          });
-        }
-      });
-    },
-    {
-      rootMargin: '-30% 0px -60% 0px',
-      threshold: 0,
-    }
-  );
-
-  sections.forEach((section) => sectionObserver.observe(section));
-
-  // Hamburger toggle
-  if (hamburger && mobileNav) {
-    hamburger.addEventListener('click', () => {
-      const isOpen = hamburger.classList.toggle('open');
-      mobileNav.classList.toggle('open', isOpen);
-      hamburger.setAttribute('aria-expanded', isOpen.toString());
-    });
-
-    // Close mobile nav on link click
-    mobileNav.querySelectorAll('a').forEach((link) => {
-      link.addEventListener('click', () => {
-        hamburger.classList.remove('open');
-        mobileNav.classList.remove('open');
-        hamburger.setAttribute('aria-expanded', 'false');
-      });
     });
   }
 
-  /* ----------------------------------------------------------------
-     2. FADE-UP ENTRANCE ANIMATIONS — IntersectionObserver
-     ---------------------------------------------------------------- */
-  const animObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          animObserver.unobserve(entry.target); // animate once
-        }
-      });
-    },
-    {
-      rootMargin: '0px 0px -80px 0px',
-      threshold: 0.1,
+  // React to OS theme changes if user hasn't explicitly set a preference
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+    if (!localStorage.getItem(THEME_STORAGE_KEY)) {
+      applyTheme(e.matches ? 'dark' : 'light');
     }
-  );
-
-  document.querySelectorAll('.fade-up, .stagger').forEach((el) => {
-    animObserver.observe(el);
   });
 
-  /* ----------------------------------------------------------------
-     3. SCROLL-TO-TOP BUTTON
-     ---------------------------------------------------------------- */
-  const scrollTopBtn = document.getElementById('scroll-top');
-  if (scrollTopBtn) {
-    scrollTopBtn.addEventListener('click', () => {
+  /* ------------------------------------------------------------
+     2. NAVIGATION SCROLL & ACTIVE SECTION HIGHLIGHT
+     ------------------------------------------------------------ */
+  const siteHeader = document.getElementById('site-header');
+  const desktopLinks = document.querySelectorAll('.desktop-nav .nav-link');
+  const mobileLinks = document.querySelectorAll('.mobile-nav .mobile-nav-link');
+  const trackedSections = document.querySelectorAll('section[id]');
+
+  function updateHeaderOnScroll() {
+    if (!siteHeader) return;
+    if (window.scrollY > 15) {
+      siteHeader.classList.add('scrolled');
+    } else {
+      siteHeader.classList.remove('scrolled');
+    }
+  }
+
+  window.addEventListener('scroll', updateHeaderOnScroll, { passive: true });
+  updateHeaderOnScroll();
+
+  if ('IntersectionObserver' in window) {
+    const sectionObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const sectionId = entry.target.getAttribute('id');
+            const targetHref = `#${sectionId}`;
+
+            desktopLinks.forEach((link) => {
+              const matches = link.getAttribute('href') === targetHref;
+              link.classList.toggle('active', matches);
+            });
+
+            mobileLinks.forEach((link) => {
+              const matches = link.getAttribute('href') === targetHref;
+              link.classList.toggle('active', matches);
+            });
+          }
+        });
+      },
+      {
+        rootMargin: '-25% 0px -65% 0px',
+        threshold: 0,
+      }
+    );
+
+    trackedSections.forEach((section) => {
+      sectionObserver.observe(section);
+    });
+  }
+
+  /* ------------------------------------------------------------
+     3. MOBILE DRAWER NAVIGATION
+     ------------------------------------------------------------ */
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileNavDrawer = document.getElementById('mobile-nav');
+
+  function closeMobileNav() {
+    if (!mobileMenuBtn || !mobileNavDrawer) return;
+    mobileMenuBtn.classList.remove('open');
+    mobileNavDrawer.classList.remove('open');
+    mobileMenuBtn.setAttribute('aria-expanded', 'false');
+  }
+
+  function openMobileNav() {
+    if (!mobileMenuBtn || !mobileNavDrawer) return;
+    mobileMenuBtn.classList.add('open');
+    mobileNavDrawer.classList.add('open');
+    mobileMenuBtn.setAttribute('aria-expanded', 'true');
+  }
+
+  if (mobileMenuBtn && mobileNavDrawer) {
+    mobileMenuBtn.addEventListener('click', () => {
+      const isOpen = mobileNavDrawer.classList.contains('open');
+      if (isOpen) {
+        closeMobileNav();
+      } else {
+        openMobileNav();
+      }
+    });
+
+    mobileLinks.forEach((link) => {
+      link.addEventListener('click', () => {
+        closeMobileNav();
+      });
+    });
+
+    // Close on Escape key press
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && mobileNavDrawer.classList.contains('open')) {
+        closeMobileNav();
+        mobileMenuBtn.focus();
+      }
+    });
+  }
+
+  /* ------------------------------------------------------------
+     4. CLIPBOARD UTILITY (COPY EMAIL)
+     ------------------------------------------------------------ */
+  const copyEmailBtn = document.getElementById('copy-email-btn');
+  if (copyEmailBtn) {
+    copyEmailBtn.addEventListener('click', async () => {
+      const email = 'carneyriley@gmail.com';
+      const label = copyEmailBtn.querySelector('.copy-text');
+      try {
+        await navigator.clipboard.writeText(email);
+        if (label) {
+          const originalText = label.textContent;
+          label.textContent = 'Copied';
+          copyEmailBtn.setAttribute('aria-label', 'Email copied to clipboard');
+          setTimeout(() => {
+            label.textContent = originalText;
+            copyEmailBtn.setAttribute('aria-label', 'Copy email address to clipboard');
+          }, 2000);
+        }
+      } catch (err) {
+        // Fallback for browsers that don't support async clipboard API
+        window.location.href = `mailto:${email}`;
+      }
+    });
+  }
+
+  /* ------------------------------------------------------------
+     5. PRINT SYSTEM DOSSIER
+     ------------------------------------------------------------ */
+  const printResumeBtn = document.getElementById('print-resume-btn');
+  if (printResumeBtn) {
+    printResumeBtn.addEventListener('click', () => {
+      window.print();
+    });
+  }
+
+  /* ------------------------------------------------------------
+     6. SCROLL TO TOP UTILITY
+     ------------------------------------------------------------ */
+  const scrollToTopBtn = document.getElementById('scroll-to-top');
+  if (scrollToTopBtn) {
+    scrollToTopBtn.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   }
 
-  /* ----------------------------------------------------------------
-     4. SMOOTH SCROLL for internal anchor links
-     ---------------------------------------------------------------- */
-  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener('click', function (e) {
-      const targetId = this.getAttribute('href');
-      if (targetId === '#') return;
-      const target = document.querySelector(targetId);
-      if (target) {
-        e.preventDefault();
-        const navHeight = nav ? nav.offsetHeight : 60;
-        const targetTop = target.getBoundingClientRect().top + window.scrollY - navHeight - 8;
-        window.scrollTo({ top: targetTop, behavior: 'smooth' });
-      }
-    });
-  });
-
-  /* ----------------------------------------------------------------
-     5. TYPING EFFECT for hero title (subtle, classy)
-     ---------------------------------------------------------------- */
-  function initTypingEffect() {
-    const titleEl = document.querySelector('.hero-title');
-    if (!titleEl) return;
-
-    // Only run if user hasn't set prefers-reduced-motion
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-    const originalText = titleEl.innerHTML;
-    titleEl.style.animationPlayState = 'paused'; // pause CSS fade-in
-
-    // After the CSS fade-in delay would have fired, start typing
-    setTimeout(() => {
-      titleEl.style.opacity = '1';
-      titleEl.style.transform = 'translateY(0)';
-      titleEl.style.animation = 'none';
-    }, 500);
-  }
-
-  initTypingEffect();
-
-  /* ----------------------------------------------------------------
-     6. CURRENT YEAR in footer
-     ---------------------------------------------------------------- */
-  const yearEl = document.getElementById('footer-year');
+  /* ------------------------------------------------------------
+     7. COPYRIGHT YEAR AUTO-UPDATE
+     ------------------------------------------------------------ */
+  const yearEl = document.getElementById('current-year');
   if (yearEl) {
     yearEl.textContent = new Date().getFullYear();
   }
-
-  /* ----------------------------------------------------------------
-     7. GITHUB STATS — live repo/follower counts via public API
-     ---------------------------------------------------------------- */
-  async function loadGitHubStats() {
-    try {
-      const res = await fetch('https://api.github.com/users/RileyCarney', {
-        headers: { Accept: 'application/vnd.github.v3+json' },
-      });
-      if (!res.ok) return;
-      const data = await res.json();
-
-      const reposEl = document.getElementById('gh-repos');
-      const followersEl = document.getElementById('gh-followers');
-      const memberEl = document.getElementById('gh-member');
-
-      if (reposEl) reposEl.textContent = data.public_repos;
-      if (followersEl) followersEl.textContent = data.followers;
-      if (memberEl) {
-        const year = new Date(data.created_at).getFullYear();
-        memberEl.textContent = year;
-      }
-    } catch (_) {
-      // Fail silently — static fallback values are in the HTML
-    }
-  }
-
-  loadGitHubStats();
 
 })();
