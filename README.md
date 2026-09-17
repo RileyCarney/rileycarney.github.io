@@ -25,7 +25,10 @@ A high-performance, accessible, and minimalist single-page static site engineere
 3. **Key Impact Metrics**: Quantitative career metrics (8+ years experience, 40% incident acceleration, 95% pipeline cost reduction, 500k+ IAM objects managed).
 4. **Professional Profile**: Executive narrative and four foundational pillars of systems engineering.
 5. **Professional Experience**: Chronological history detailing roles at **Zoetis**, **Direct Technology**, **Providence Health & Services**, and **Soundpath Health**.
-6. **Technical Projects**: Flagship enterprise initiatives (**ZRL Infrastructure Project 2026**, **Legacy Data Integration Upgrade 2024**, **Internal Analytics Toolkit 2023**, **IAM Automation System 2019**) alongside open-source repositories and published guides.
+6. **Technical Projects**:
+   - **GitHub Software Repositories (`github.com/RileyCarney`)**: Featured open-source codebases including [`Infinite-Announcements-Config-Generator`](https://github.com/RileyCarney/Infinite-Announcements-Config-Generator) (PowerShell/YAML configuration generator, AGPL-3.0) and [`rileycarney.github.io`](https://github.com/RileyCarney/rileycarney.github.io) (vanilla web architecture, GitHub Pages).
+   - **Enterprise Systems & Infrastructure**: Flagship enterprise initiatives (**ZRL Infrastructure Project 2026**, **Legacy Data Integration Upgrade 2024**, **Internal Analytics Toolkit 2023**, **IAM Automation System 2019**).
+   - **Technical Writing**: Published LinkedIn Pulse guides on Power Automate and PowerShell security patterns.
 7. **Technical Skills Matrix**: Categorical grid covering Languages & Scripting, Data & Infrastructure, Tools & Platforms, and Engineering Practices.
 8. **Education & Certifications**: Academic degrees (**University of Washington** BS Mathematics, **Bellevue College** Mathematics DTA) and professional credentials (**CSPO - Certified Scrum Product Owner**, LinkedIn Learning certifications).
 9. **Official Resume Document**: Verification card with download links and browser preview for `Riley Carney Resume 2026.pdf`.
