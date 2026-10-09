@@ -1,69 +1,16 @@
 /* ============================================================
    RILEY CARNEY — Official Portfolio & Engineering Resume
    main.js — Clean Executive Utilities
-   Theme Management, Navigation, Clipboard & Print Controls
+   Navigation, Clipboard & Print Controls
    ============================================================ */
 
 (function () {
   'use strict';
 
-  /* ------------------------------------------------------------
-     1. THEME CONTROLLER (LIGHT / DARK)
-     ------------------------------------------------------------ */
-  const THEME_STORAGE_KEY = 'rileycarney_theme_preference';
-  const htmlElement = document.documentElement;
-  const themeToggleBtn = document.getElementById('theme-toggle');
-
-  function getPreferredTheme() {
-    try {
-      const stored = localStorage.getItem(THEME_STORAGE_KEY);
-      if (stored === 'dark' || stored === 'light') {
-        return stored;
-      }
-    } catch (err) {}
-    return 'dark';
-  }
-
-  function applyTheme(theme) {
-    htmlElement.setAttribute('data-theme', theme);
-    if (themeToggleBtn) {
-      const isDark = theme === 'dark';
-      themeToggleBtn.setAttribute(
-        'aria-label',
-        isDark ? 'Switch to light color theme' : 'Switch to dark color theme'
-      );
-      themeToggleBtn.setAttribute(
-        'title',
-        isDark ? 'Switch to light color theme' : 'Switch to dark color theme'
-      );
-    }
-  }
-
-  // Initialize theme immediately
-  const initialTheme = getPreferredTheme();
-  applyTheme(initialTheme);
-
-  if (themeToggleBtn) {
-    themeToggleBtn.addEventListener('click', () => {
-      const current = htmlElement.getAttribute('data-theme') || 'dark';
-      const nextTheme = current === 'dark' ? 'light' : 'dark';
-      applyTheme(nextTheme);
-      try {
-        localStorage.setItem(THEME_STORAGE_KEY, nextTheme);
-      } catch (err) {
-        // Handle private browsing or localStorage disabled
-      }
-    });
-  }
-
-  // React to OS theme changes if user hasn't explicitly set a preference
-  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-    try {
-      if (!localStorage.getItem(THEME_STORAGE_KEY)) {
-        applyTheme(e.matches ? 'dark' : 'light');
-      }
-    } catch (err) {}
-  });
+  // Clear any legacy theme preference to ensure dark profile permanence
+  try {
+    localStorage.removeItem('rileycarney_theme_preference');
+  } catch (err) {}
 
   /* ------------------------------------------------------------
      2. NAVIGATION SCROLL & ACTIVE SECTION HIGHLIGHT

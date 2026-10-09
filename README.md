@@ -11,7 +11,7 @@ Official curriculum vitae and engineering portfolio for **Riley Carney** — IT 
 A high-performance, accessible, and minimalist single-page static site engineered with semantic HTML5, modern CSS custom properties, and vanilla JavaScript. Built to provide an authoritative, executive-grade presentation of career history, technical implementations, architecture projects, and credentials.
 
 - **Theme**: Minimalist Executive & Systems Engineering aesthetic (zero emojis, high-contrast typography, strict layout alignment).
-- **Color Modes**: Automatic system preference detection (`prefers-color-scheme`) with persistent manual Light / Dark toggle.
+- **Color Mode**: Dark profile (Executive Slate Obsidian).
 - **Performance & Accessibility**: 100% vanilla, zero external JavaScript libraries, WCAG AAA compliant contrast, keyboard operable, responsive from 320px to ultrawide displays.
 - **Print Optimization**: Native `@media print` rules allowing the page to be printed directly as an official executive curriculum vitae dossier (`window.print()`).
 
@@ -19,7 +19,7 @@ A high-performance, accessible, and minimalist single-page static site engineere
 
 ## Page Sections
 
-1. **Top Masthead**: Sticky navigation with brand identity, semantic section links, and theme toggle.
+1. **Top Masthead**: Sticky navigation with brand identity and semantic section links.
 2. **Executive Dossier (Hero)**: Professional headshot (`assets/profile.jpg`), official title, location, direct contact links, executive summary, and primary call-to-action buttons.
 3. **Key Impact Metrics**: Quantitative career metrics (8+ years experience, 40% incident acceleration, 500k+ IAM objects managed).
 4. **Professional Profile**: Executive narrative and four foundational pillars of systems engineering.
@@ -42,7 +42,7 @@ RileyCarneySite/
 ├── css/
 │   └── style.css                        # Complete design system & print stylesheet
 ├── js/
-│   └── main.js                          # Navigation, theme controller & utilities
+│   └── main.js                          # Navigation controller & utilities
 ├── index.html                           # Semantic HTML structure & Schema.org JSON-LD
 ├── README.md                            # Documentation
 ```
