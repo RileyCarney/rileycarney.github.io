@@ -16,6 +16,7 @@
      2. NAVIGATION SCROLL & ACTIVE SECTION HIGHLIGHT
      ------------------------------------------------------------ */
   const siteHeader = document.getElementById('site-header');
+  const sidebarLinks = document.querySelectorAll('.sidebar-link');
   const desktopLinks = document.querySelectorAll('.desktop-nav .nav-link');
   const mobileLinks = document.querySelectorAll('.mobile-nav .mobile-nav-link');
   const trackedSections = document.querySelectorAll('section[id]');
@@ -40,6 +41,16 @@
             const sectionId = entry.target.getAttribute('id');
             const targetHref = `#${sectionId}`;
 
+            sidebarLinks.forEach((link) => {
+              const matches = link.getAttribute('href') === targetHref;
+              link.classList.toggle('active', matches);
+              if (matches) {
+                link.setAttribute('aria-current', 'true');
+              } else {
+                link.removeAttribute('aria-current');
+              }
+            });
+
             desktopLinks.forEach((link) => {
               const matches = link.getAttribute('href') === targetHref;
               link.classList.toggle('active', matches);
@@ -62,6 +73,67 @@
       sectionObserver.observe(section);
     });
   }
+
+  function updateActiveOnScroll() {
+    const scrollPos = window.scrollY + Math.min(300, window.innerHeight * 0.35);
+    let currentId = '';
+
+    // Check if at the bottom of the page
+    if ((window.innerHeight + window.scrollY) >= (document.documentElement.scrollHeight - 60)) {
+      currentId = 'contact';
+    } else {
+      trackedSections.forEach((section) => {
+        const top = section.offsetTop;
+        const height = section.offsetHeight;
+        if (scrollPos >= top && scrollPos < top + height) {
+          currentId = section.getAttribute('id');
+        }
+      });
+    }
+
+    if (currentId && currentId !== 'hero') {
+      const targetHref = `#${currentId}`;
+      sidebarLinks.forEach((link) => {
+        const matches = link.getAttribute('href') === targetHref;
+        link.classList.toggle('active', matches);
+        if (matches) {
+          link.setAttribute('aria-current', 'true');
+        } else {
+          link.removeAttribute('aria-current');
+        }
+      });
+    } else if (currentId === 'hero') {
+      sidebarLinks.forEach((link) => {
+        link.classList.remove('active');
+        link.removeAttribute('aria-current');
+      });
+    }
+  }
+
+  window.addEventListener('scroll', updateActiveOnScroll, { passive: true });
+  updateActiveOnScroll();
+
+  sidebarLinks.forEach((link) => {
+    link.addEventListener('click', (e) => {
+      const targetId = link.getAttribute('href');
+      if (targetId && targetId.startsWith('#')) {
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          e.preventDefault();
+          targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          sidebarLinks.forEach((l) => {
+            l.classList.remove('active');
+            l.removeAttribute('aria-current');
+          });
+          link.classList.add('active');
+          link.setAttribute('aria-current', 'true');
+          if (history.pushState) {
+            history.pushState(null, '', targetId);
+          }
+        }
+      }
+    });
+  });
 
   /* ------------------------------------------------------------
      3. MOBILE DRAWER NAVIGATION
