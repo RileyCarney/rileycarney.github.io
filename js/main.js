@@ -81,6 +81,8 @@
     // Check if at the bottom of the page
     if ((window.innerHeight + window.scrollY) >= (document.documentElement.scrollHeight - 60)) {
       currentId = 'contact';
+    } else if (window.scrollY < 80) {
+      currentId = 'hero';
     } else {
       trackedSections.forEach((section) => {
         const top = section.offsetTop;
@@ -91,7 +93,7 @@
       });
     }
 
-    if (currentId && currentId !== 'hero') {
+    if (currentId) {
       const targetHref = `#${currentId}`;
       sidebarLinks.forEach((link) => {
         const matches = link.getAttribute('href') === targetHref;
@@ -101,11 +103,6 @@
         } else {
           link.removeAttribute('aria-current');
         }
-      });
-    } else if (currentId === 'hero') {
-      sidebarLinks.forEach((link) => {
-        link.classList.remove('active');
-        link.removeAttribute('aria-current');
       });
     }
   }
@@ -120,7 +117,11 @@
         const targetElement = document.querySelector(targetId);
         if (targetElement) {
           e.preventDefault();
-          targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          if (targetId === '#hero') {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          } else {
+            targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
           sidebarLinks.forEach((l) => {
             l.classList.remove('active');
             l.removeAttribute('aria-current');
@@ -134,6 +135,17 @@
       }
     });
   });
+
+  const brandLink = document.querySelector('.brand-link');
+  if (brandLink) {
+    brandLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (history.pushState) {
+        history.pushState(null, '', '#hero');
+      }
+    });
+  }
 
   /* ------------------------------------------------------------
      3. MOBILE DRAWER NAVIGATION
@@ -166,7 +178,15 @@
     });
 
     mobileLinks.forEach((link) => {
-      link.addEventListener('click', () => {
+      link.addEventListener('click', (e) => {
+        const targetHref = link.getAttribute('href');
+        if (targetHref === '#hero') {
+          e.preventDefault();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          if (history.pushState) {
+            history.pushState(null, '', targetHref);
+          }
+        }
         closeMobileNav();
       });
     });
