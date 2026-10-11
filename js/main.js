@@ -78,11 +78,15 @@
     const scrollPos = window.scrollY + Math.min(300, window.innerHeight * 0.35);
     let currentId = '';
 
+    const sectionsArr = Array.from(trackedSections);
+    const firstSectionId = sectionsArr.length > 0 ? sectionsArr[0].getAttribute('id') : '';
+    const lastSectionId = sectionsArr.length > 0 ? sectionsArr[sectionsArr.length - 1].getAttribute('id') : '';
+
     // Check if at the bottom of the page
     if ((window.innerHeight + window.scrollY) >= (document.documentElement.scrollHeight - 60)) {
-      currentId = 'contact';
+      currentId = lastSectionId;
     } else if (window.scrollY < 80) {
-      currentId = 'hero';
+      currentId = firstSectionId;
     } else {
       trackedSections.forEach((section) => {
         const top = section.offsetTop;
@@ -117,7 +121,9 @@
         const targetElement = document.querySelector(targetId);
         if (targetElement) {
           e.preventDefault();
-          if (targetId === '#hero') {
+          const sectionsArr = Array.from(trackedSections);
+          const firstSectionId = sectionsArr.length > 0 ? sectionsArr[0].getAttribute('id') : '';
+          if (targetId === `#${firstSectionId}` || targetId === '#hero' || targetId === '#consulting-hero') {
             window.scrollTo({ top: 0, behavior: 'smooth' });
           } else {
             targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -136,16 +142,19 @@
     });
   });
 
-  const brandLink = document.querySelector('.brand-link');
-  if (brandLink) {
-    brandLink.addEventListener('click', (e) => {
-      e.preventDefault();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (history.pushState) {
-        history.pushState(null, '', '#hero');
+  const brandLinks = document.querySelectorAll('.brand-link, .sidebar-brand-link');
+  brandLinks.forEach((link) => {
+    link.addEventListener('click', (e) => {
+      const href = link.getAttribute('href') || '';
+      if (href.startsWith('#')) {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        if (history.pushState) {
+          history.pushState(null, '', href);
+        }
       }
     });
-  }
+  });
 
   /* ------------------------------------------------------------
      3. MOBILE DRAWER NAVIGATION
@@ -180,15 +189,28 @@
     mobileLinks.forEach((link) => {
       link.addEventListener('click', (e) => {
         const targetHref = link.getAttribute('href');
-        if (targetHref === '#hero') {
-          e.preventDefault();
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-          if (history.pushState) {
-            history.pushState(null, '', targetHref);
+        if (targetHref && targetHref.startsWith('#')) {
+          if (targetHref === '#hero' || targetHref === '#consulting-hero') {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            if (history.pushState) {
+              history.pushState(null, '', targetHref);
+            }
           }
         }
         closeMobileNav();
       });
+    });
+
+    // Close on click outside
+    document.addEventListener('click', (e) => {
+      if (
+        mobileNavDrawer.classList.contains('open') &&
+        !mobileNavDrawer.contains(e.target) &&
+        !mobileMenuBtn.contains(e.target)
+      ) {
+        closeMobileNav();
+      }
     });
 
     // Close on Escape key press
@@ -198,6 +220,129 @@
         mobileMenuBtn.focus();
       }
     });
+  }
+
+  /* ------------------------------------------------------------
+     4. CONSULTING INQUIRY FORM CONTROLLER
+     ------------------------------------------------------------ */
+  const inquiryForm = document.getElementById('consulting-inquiry-form');
+  const copyInquiryBtn = document.getElementById('btn-copy-inquiry');
+  const feedbackEl = document.getElementById('inquiry-feedback');
+
+  function getInquiryDetails() {
+    const typeEl = document.querySelector('input[name="engagement_type"]:checked');
+    const typeVal = typeEl ? typeEl.value : 'Scoped Project Sprint';
+    const nameVal = (document.getElementById('inquiry-name') || {}).value || '';
+    const companyVal = (document.getElementById('inquiry-company') || {}).value || '';
+    const emailVal = (document.getElementById('inquiry-email') || {}).value || '';
+    const timelineVal = (document.getElementById('inquiry-timeline') || {}).value || 'Immediate (Next 1-2 Weeks)';
+    const scopeVal = (document.getElementById('inquiry-scope') || {}).value || '';
+
+    return {
+      type: typeVal,
+      name: nameVal.trim(),
+      company: companyVal.trim(),
+      email: emailVal.trim(),
+      timeline: timelineVal,
+      scope: scopeVal.trim()
+    };
+  }
+
+  function formatInquiryText(details) {
+    return [
+      `CONSULTING INQUIRY — RILEY CARNEY`,
+      `---------------------------------`,
+      `Engagement Type: ${details.type}`,
+      `Client Name:     ${details.name || 'Not specified'}`,
+      `Company/Org:     ${details.company || 'Not specified'}`,
+      `Work Email:      ${details.email || 'Not specified'}`,
+      `Target Timeline: ${details.timeline}`,
+      ``,
+      `Project Scope & Technical Objectives:`,
+      `${details.scope || 'To be discussed during initial consultation.'}`,
+      `---------------------------------`
+    ].join('\n');
+  }
+
+  if (inquiryForm) {
+    inquiryForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const details = getInquiryDetails();
+
+      const subject = encodeURIComponent(`[Consulting Inquiry] ${details.type} — ${details.company || details.name || 'Client'}`);
+      const bodyText = [
+        `Hello Riley,`,
+        ``,
+        `I would like to inquire about an engagement with you.`,
+        ``,
+        `Engagement Type: ${details.type}`,
+        `Client Name: ${details.name || 'Not provided'}`,
+        `Company: ${details.company || 'Not provided'}`,
+        `Work Email: ${details.email || 'Not provided'}`,
+        `Target Timeline: ${details.timeline}`,
+        ``,
+        `Project Scope & Objectives:`,
+        `${details.scope || 'Let us discuss on a brief introductory call.'}`,
+        ``,
+        `Best regards,`,
+        `${details.name || ''}`
+      ].join('\n');
+
+      const mailtoUrl = `mailto:riley.carney.ai@gmail.com?subject=${subject}&body=${encodeURIComponent(bodyText)}`;
+      window.location.href = mailtoUrl;
+
+      if (feedbackEl) {
+        feedbackEl.textContent = 'Inquiry draft opened in your email client! If your mail client did not open, you can also use "Copy Scope Details" and email riley.carney.ai@gmail.com directly.';
+        feedbackEl.classList.add('visible');
+        setTimeout(() => {
+          feedbackEl.classList.remove('visible');
+        }, 8000);
+      }
+    });
+  }
+
+  if (copyInquiryBtn) {
+    copyInquiryBtn.addEventListener('click', () => {
+      const details = getInquiryDetails();
+      const textToCopy = formatInquiryText(details);
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(textToCopy).then(() => {
+          if (feedbackEl) {
+            feedbackEl.textContent = 'Inquiry scope copied to clipboard! You can paste directly into an email to riley.carney.ai@gmail.com.';
+            feedbackEl.classList.add('visible');
+            setTimeout(() => {
+              feedbackEl.classList.remove('visible');
+            }, 6000);
+          }
+        }).catch(() => {
+          fallbackCopyText(textToCopy);
+        });
+      } else {
+        fallbackCopyText(textToCopy);
+      }
+    });
+  }
+
+  function fallbackCopyText(text) {
+    const textArea = document.createElement('textarea');
+    textArea.value = text;
+    textArea.style.position = 'fixed';
+    textArea.style.opacity = '0';
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+    try {
+      document.execCommand('copy');
+      if (feedbackEl) {
+        feedbackEl.textContent = 'Inquiry scope copied to clipboard! You can paste directly into an email to riley.carney.ai@gmail.com.';
+        feedbackEl.classList.add('visible');
+        setTimeout(() => {
+          feedbackEl.classList.remove('visible');
+        }, 6000);
+      }
+    } catch (err) {}
+    document.body.removeChild(textArea);
   }
 
   /* ------------------------------------------------------------
