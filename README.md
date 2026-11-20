@@ -26,7 +26,7 @@ A high-performance, accessible, and minimalist single-page static site engineere
 5. **Professional Experience**: Chronological history detailing roles at **Zoetis**, **Direct Technology**, **Providence Health & Services**, and **Soundpath Health**.
 6. **Technical Projects**: Flagship enterprise initiatives (**ZRL Infrastructure Project 2026**, **Internal Analytics Toolkit 2023**, **IAM Automation System 2019**).
 7. **Technical Skills Matrix**: Categorical grid covering Languages & Scripting, Data & Infrastructure, Tools & Platforms, and Engineering Practices.
-8. **Education & Certifications**: Academic degrees (**University of Washington** BS Mathematics, **Bellevue College** Mathematics DTA) and professional credentials (**CSPO - Certified Scrum Product Owner**, LinkedIn Learning certifications).
+8. **Education & Certifications**: Academic degrees (**University of Washington** BS Mathematics, **Bellevue College** Mathematics DTA) and professional credentials (**Snowflake**, **Microsoft**, **Atlassian**, **Scrum Alliance CSPO**, and **The Walt Disney Company** certifications).
 10. **Direct Contact**: Fast communication channels (Email with one-click clipboard copy, Telephone, LinkedIn, and GitHub).
 11. **Site Footer**: Formal copyright and back-to-top navigation.
 
